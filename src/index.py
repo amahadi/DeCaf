@@ -1,4 +1,4 @@
-from utils.TextProcessor import TextProcessor
+from utils import TextProcessor
 import pandas as pd
 
 textProcessor = TextProcessor()

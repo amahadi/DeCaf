@@ -1,33 +1,28 @@
 from spellchecker import SpellChecker
+from config import ROOT_DIR
 
 class TextProcessor:
 
     def __init__(self):
         self.spell = SpellChecker()
+        self.right = open(ROOT_DIR + "/data/literature.txt", 'r').read().split(' ')
 
     def detectMisspelledWords(self, text):
         words = text.split(' ')
-        right = self.spell.known(words)
         wrong = self.spell.unknown(words)
-        return right, wrong
+        return wrong
     
     def replaceMispelledWords(self, text):
-        right, wrong = self.detectMisspelledWords(text)
-        # print(right)
-        # print(wrong)
+        text = text.lower()
+        wrong = self.detectMisspelledWords(text)
         for word in wrong:
             suggestions = self.spell.candidates(word)
-            # print("For "+word+" suggestions: "+', '.join(suggestions))
             if len(suggestions) == 0:
                 text = text.replace(word, '')
             else:
                 for suggest in suggestions:
-                    if suggest in right:
+                    if suggest in self.right:
                         text = text.replace(word, suggest)
                     else:
                         text = text.replace(word, '')
         return text
-            
-            
-if __name__ == '__main__':
-    main()
