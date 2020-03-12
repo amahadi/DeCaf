@@ -5,7 +5,7 @@ class TextProcessor:
 
     def __init__(self):
         self.spell = SpellChecker()
-        self.right = open(ROOT_DIR + '/data/literature.txt', 'r').read().split(' ')
+        self.right = open(ROOT_DIR + "/data/literature.txt", 'r').read().split(' ')
 
     def detectMisspelledWords(self, text):
         words = text.split(' ')
@@ -13,6 +13,7 @@ class TextProcessor:
         return wrong
     
     def replaceMispelledWords(self, text):
+        text = text.lower()
         wrong = self.detectMisspelledWords(text)
         for word in wrong:
             suggestions = self.spell.candidates(word)
