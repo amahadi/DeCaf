@@ -13,7 +13,7 @@ class WordEmbedder:
         self.MODEL_PATH = self.ROOT_DIR + '/models'
     
     def create(self):
-        # model = ft.train_unsupervised(self.DATA_PATH + '/literature.txt')
-        # model.save_model(self.MODEL_PATH + '/wordembeddings.bin')
-        return 'Created'
+        fm(self.DATA_PATH).create_literature()
+        model = ft.train_unsupervised(self.DATA_PATH + '/literature.txt')
+        model.save_model(self.MODEL_PATH + '/wordembeddings.bin')
         

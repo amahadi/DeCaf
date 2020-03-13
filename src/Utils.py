@@ -9,5 +9,6 @@ class FileManager:
         if not os.path.exists(self.path + '/' + name):
             os.mkdir(self.path + '/' + name)
             
-    def create_literature(self, path):
-        return 0
+    def create_literature(self):
+        if not os.path.exists(self.path + '/' + 'literature.txt'):
+            return 'File Not found. Need to download'
