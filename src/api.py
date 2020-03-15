@@ -1,6 +1,6 @@
 from flask import Flask, request, jsonify
-from src.WordEmbedder import WordEmbedder
-from src.Classifier import Classifier
+from WordEmbedder import WordEmbedder
+from Classifier import Classifier
 
 app = Flask(__name__)
 
