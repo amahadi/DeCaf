@@ -8,9 +8,8 @@ from gensim.models.keyedvectors import KeyedVectors
 import multiprocessing as mp
 import warnings
 
-question = pd.read_csv("/home/alvi/Documents/projects/DeCaf/data/train_data/questions.csv")
-answer = pd.read_csv("/home/alvi/Documents/projects/DeCaf/data/train_data/answers.csv")
-comment = pd.read_csv("/home/alvi/Documents/projects/DeCaf/data/train_data/comments.csv")
+test = pd.read_csv("/home/alvi/Documents/projects/DeCaf/data/test_data/test.csv")
+validation = pd.read_csv("/home/alvi/Documents/projects/DeCaf/data/test_data/validation.csv")
 
 warnings.simplefilter("ignore")
 
@@ -45,15 +44,13 @@ def so_inject(infile, outfile):
         f.write(row)
         
 infiles = [
-           question,
-           answer,
-           comment
+          test,
+          validation
 ]
 
 outfiles = [
-              "/home/alvi/Documents/projects/DeCaf/data/train_data/question_so_injected.csv",
-              "/home/alvi/Documents/projects/DeCaf/data/train_data/answer_so_injected.csv",
-              "/home/alvi/Documents/projects/DeCaf/data/train_data/comment_so_injected.csv"            
+              "/home/alvi/Documents/projects/DeCaf/data/test_data/test_so_injected.csv",
+              "/home/alvi/Documents/projects/DeCaf/data/test_data/validation_so_injected.csv"            
 ]
 
 jobs = []
