@@ -1,5 +1,4 @@
 from flask import Flask, request, jsonify
-from WordEmbedder import WordEmbedder
 from SimilarWordInjector import SimilarWordInjector
 from Vectorizer import Vectorizer
 from Classifier import Classifier
@@ -8,7 +7,6 @@ from pathlib import Path
 import nltk
 
 app = Flask(__name__)
-ROOT_DIR = str(Path(__file__).parent.parent)
 
 Injector = SimilarWordInjector()
 Vectorizer = Vectorizer()
@@ -31,9 +29,5 @@ def classify():
             )
         }
     )
-
-@app.route('/we', methods=['GET'])
-def we():
-    return jsonify(WordEmbedder().create())
 
 app.run(debug=True)
