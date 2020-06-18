@@ -8,15 +8,16 @@ import nltk
 
 app = Flask(__name__)
 
-Injector = SimilarWordInjector()
+nltk.download('wordnet')
 Vectorizer = Vectorizer()
 Classifier = Classifier()
-nltk.download('wordnet')
+Injector = SimilarWordInjector()
 
 @app.route('/classify', methods=['POST'])
 def classify():
     return jsonify(
         {
+            'text': request.json['text'],
             'label': 
             Classifier.classify(
                 Vectorizer.text_to_vector(
@@ -30,4 +31,8 @@ def classify():
         }
     )
 
-app.run(debug=True)
+app.run(
+    debug=True,
+    port=8080,
+    use_reloader=False
+)
