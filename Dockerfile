@@ -9,3 +9,7 @@ WORKDIR /app
 RUN pip install -r requirements.txt
 
 RUN python src/api.py
+
+ENTRYPOINT [ "python" ]
+
+CMD [ "src/api.py" ]
