@@ -33,6 +33,5 @@ def classify():
 
 app.run(
     debug=True,
-    port=8080,
-    use_reloader=False
+    host='0.0.0.0'
 )
